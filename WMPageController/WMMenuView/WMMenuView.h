@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "WMMenuItem.h"
 #import "WMProgressView.h"
+#define WMUNDEFINED_VALUE -1
+
 @class WMMenuView;
 
 typedef NS_ENUM(NSUInteger, WMMenuViewStyle) {
@@ -32,7 +34,7 @@ typedef NS_ENUM(NSUInteger, WMMenuViewLayoutMode) {
 @protocol WMMenuViewDelegate <NSObject>
 @optional
 - (BOOL)menuView:(WMMenuView *)menu shouldSelesctedIndex:(NSInteger)index;
-- (void)menuView:(WMMenuView *)menu didSelesctedIndex:(NSInteger)index currentIndex:(NSInteger)currentIndex;
+- (void)menuView:(WMMenuView *)menu didSelectedIndex:(NSInteger)index currentIndex:(NSInteger)currentIndex;
 - (CGFloat)menuView:(WMMenuView *)menu widthForItemAtIndex:(NSInteger)index;
 - (CGFloat)menuView:(WMMenuView *)menu itemMarginAtIndex:(NSInteger)index;
 - (CGFloat)menuView:(WMMenuView *)menu titleSizeForState:(WMMenuItemState)state atIndex:(NSInteger)index;
@@ -90,6 +92,7 @@ typedef NS_ENUM(NSUInteger, WMMenuViewLayoutMode) {
 @property (nonatomic, assign) CGFloat speedFactor;
 @property (nonatomic, assign) CGFloat progressViewCornerRadius;
 @property (nonatomic, assign) BOOL progressViewIsNaughty;
+@property (nonatomic, assign) BOOL showOnNavigationBar;
 
 - (void)slideMenuAtProgress:(CGFloat)progress;
 - (void)selectItemAtIndex:(NSInteger)index;
